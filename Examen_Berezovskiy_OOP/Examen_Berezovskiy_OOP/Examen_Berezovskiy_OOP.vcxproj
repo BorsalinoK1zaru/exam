@@ -144,14 +144,20 @@
     <ClCompile Include="FlyweightColor.cpp" />
     <ClCompile Include="Hair.cpp" />
     <ClCompile Include="Npc.cpp" />
+    <ClCompile Include="Obuw.cpp" />
     <ClCompile Include="Reader.cpp" />
+    <ClCompile Include="Tors.cpp" />
+    <ClCompile Include="Writer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Clothes.h" />
     <ClInclude Include="FlyweightColor.h" />
     <ClInclude Include="Hair.h" />
     <ClInclude Include="Npc.h" />
+    <ClInclude Include="Obuw.h" />
     <ClInclude Include="Reader.h" />
+    <ClInclude Include="Tors.h" />
+    <ClInclude Include="Writer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

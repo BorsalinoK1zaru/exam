@@ -4,62 +4,101 @@
 class Clothes
 {
 	friend Reader;
-	Reader f1;
 	bool sex;
-	string path;
 	string verh;
 	string niz;
 	string dop;
-	string URL;
+	string URLverh;
+	string URLniz;
+	string URLdop;
 	string colorVerh;
 	string colorNiz;
 	string colorDop;
-
-protected:
-	Clothes(string path,bool sex) {
-		Reader f1(path);
+public:
+	Clothes() {};
+	Clothes(bool sex) {
 		this->sex = sex;
-		if (sex == true) {
-			vector<string>cloth = splitString(f1,4,7);
-			verh= cloth[1];
-			URL = cloth[2];
+		if (sex == 1) {
+			Reader f1("Examen_Berezovskiy_OOP/odejdaW");
+			Reader f2("Examen_Berezovskiy_OOP/clothesColor");
+			vector<string>itog = splitString(f1, 3, 6);
+			vector<string>color = splitString(f2, 1, 4);
+			verh = itog[0];
+			URLverh = itog[1];
+			colorVerh = color[0];
 			if (verh != "platie_v_pol") {
-				cloth = splitString(f1, 1, 2);
-				niz = cloth[1];
-				URL = cloth[2];
-				if (random(0, 1) == true) {
-					cloth = splitString(f1, 7,7);
-					dop = cloth[1];
-					URL = cloth[2];
+				itog = splitString(f1, 1, 2);
+				color = splitString(f2, 3, 4);
+				niz = itog[0];
+				URLniz = itog[1];
+				colorNiz = color[0];
+				if (random(0, 1) == 1) {
+					itog = splitString(f1, 6);
+					color = splitString(f2, 1, 4);
+					dop = itog[0];
+					URLdop = itog[1];
+					colorDop = color[0];
 				}
 			}
 		}
 		else {
-			vector<string>cloth = splitString(f1, 1, 2);
-			niz = cloth[1];
-			URL = cloth[2];
-			bool ran=random(0,1);
-			if (ran == 0) {
-				cloth = splitString(f1, 5,6 );
-				verh = cloth[1];
-				URL = cloth[2];
-			}
-			else {
-				cloth = splitString(f1, 7);
-				verh = cloth[1];
-				URL = cloth[2];
+			Reader f1("Examen_Berezovskiy_OOP/odejdaM");
+			Reader f2("Examen_Berezovskiy_OOP/clothesColor");
+			vector<string>itog = splitString(f1, 1,2);
+			vector<string>color = splitString(f2, 3, 4);
+			niz = itog[0];
+			URLniz = itog[1];
+			colorNiz = color[0];
+			if (random(0, 1) == 1) {
+				itog = splitString(f1, 3);
+				color = splitString(f2, 1, 4);
+				verh = itog[0];
+				URLverh = itog[1];
+				colorVerh = color[0];
+				if (random(0, 1) == 1) {
+					itog = splitString(f1, 4);
+					color = splitString(f2, 1, 4);
+					dop = itog[0];
+					URLdop = itog[1];
+					colorVerh = color[0];
+				}
 			}
 		}
-		
 	}
+	string getVerh() {
+		if (verh.empty() == 0)return verh;
+		else return "empty";
+	}
+	string getNiz() {
+		if (niz.empty() == 0)return niz;
+		else return "empty";
+	}
+	string getDop() {
+		if (dop.empty() == 0)return dop;
+		else return "empty";
+	}
+	string getColorverh() {
+		if (colorVerh.empty() == 0)return colorVerh;
+		else return "empty";
+	}
+	string getColorNiz() {
+		if (colorNiz.empty() == 0)return colorNiz;
+		else return "empty";
+	}
+	string getColorDop() {
+		if (colorDop.empty() == 0)return colorDop;
+		else return "empty";
+	}
+
+
+
 private:
 	vector<string>splitString(Reader f1,int a,int b) {
-		Reader f1(path);
 		vector<string> dop=f1.getZnachenia();
 		vector<string> itog;
 		string str = dop[random(a,b)];
 		string st1;
-		for (int i = 0,k; i < str.size(); i++) {
+		for (int i = 0,k=0; i < str.size(); i++) {
 			if (str[i] != ',' && k==0) {
 				st1 += str[i];
 			}
@@ -76,12 +115,11 @@ private:
 		return itog;
 	}
 	vector<string>splitString(Reader f1, int a) {
-		Reader f1(path);
 		vector<string> dop = f1.getZnachenia();
 		vector<string> itog;
 		string str = dop[a];
 		string st1;
-		for (int i = 0, k; i < str.size(); i++) {
+		for (int i = 0, k=0; i < str.size(); i++) {
 			if (str[i] != ',' && k == 0) {
 				st1 += str[i];
 			}
@@ -97,5 +135,10 @@ private:
 		itog.push_back(st1);
 		return itog;
 	}
+public:
+	string getVerh() {
+		return verh;
+	}
+
 };
 
